@@ -31,11 +31,7 @@ export class NaverCommerceService {
       body: params.toString(),
     });
 
-    if (res.status === 200) {
-      return res.json();
-    }
-
-    return null;
+    return res.json();
   }
 
   generateSignature(timestamp: number) {

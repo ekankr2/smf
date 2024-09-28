@@ -15,11 +15,11 @@ export async function POST(request: NextRequest) {
   const naverCommerceService = new NaverCommerceService();
   const token = await naverCommerceService.getToken();
 
-  if (token) {
-    return NextResponse.json(token, { status: 201 });
-  }
+  // if (token) {
+  //   return NextResponse.json(token, { status: 201 });
+  // }
 
-  return NextResponse.json({ message: "Failed to get token" }, { status: 400 });
+  return NextResponse.json(token, { status: 201 });
 }
 
 // {
