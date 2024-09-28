@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
   try {
     const naverCommerceService = new NaverCommerceService();
     const token = await naverCommerceService.getToken();
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: error.message || "fail" },
       { status: 400 },
