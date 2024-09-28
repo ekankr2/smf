@@ -27,8 +27,5 @@ import { NaverCommerceService } from "@/services/NaverCommerceService";
  *         description: Created
  */
 export async function POST(request: NextRequest) {
-  const naverCommerceService = new NaverCommerceService();
-  const token = await naverCommerceService.getToken();
-
-  return NextResponse.json(token, { status: 201 });
+  return NextResponse.json({ hello: "world" }, { status: 200 });
 }
