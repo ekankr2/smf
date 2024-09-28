@@ -27,5 +27,7 @@ import { NaverCommerceService } from "@/services/NaverCommerceService";
  *         description: Created
  */
 export async function POST(request: NextRequest) {
-  return NextResponse.json({ hello: "world" }, { status: 200 });
+  const salt = process.env.NAVER_COMMERCE_APPLICATION_SECRET;
+
+  return NextResponse.json({ hello: salt }, { status: 200 });
 }
