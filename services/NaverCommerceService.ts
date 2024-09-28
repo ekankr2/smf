@@ -17,7 +17,7 @@ export class NaverCommerceService {
     const signature = this.generateSignature(timestamp);
     const params = new URLSearchParams({
       client_id: this.APPICATION_ID,
-      timestamp: timestamp,
+      timestamp: timestamp.toString(),
       grant_type: "client_credentials",
       client_secret_sign: signature,
       type: "SELF",
