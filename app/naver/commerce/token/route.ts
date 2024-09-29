@@ -6,7 +6,7 @@ import { NaverCommerceService } from "@/services/NaverCommerceService";
  * /naver/commerce/token:
  *   post:
  *     summary: 토큰 발급
- *     tags: [naver]
+ *     tags: [네이버]
  *     responses:
  *       201:
  *         description: Created
