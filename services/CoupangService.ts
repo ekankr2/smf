@@ -13,7 +13,7 @@ export class CoupangService {
     this.BASE_URL = "https://api-gateway.coupang.com";
   }
 
-  generateAuthorization = (method, path, query) => {
+  generateAuthorization = (method: string, path: string, query: string) => {
     const datetime =
       new Date().toISOString().slice(2, 19).replace(/[-:]/gi, "") + "Z";
     const message = `${datetime}${method}${path}${query}`;
