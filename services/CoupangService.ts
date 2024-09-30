@@ -38,7 +38,7 @@ export class CoupangService {
     const method = "GET";
     const path = `/v2/providers/openapi/apis/api/v4/vendors/${this.VENDOR_ID}/ordersheets`;
     const query =
-      "createdAtFrom=2024-09-28&createdAtTo=2024-09-29&status=INSTRUCT";
+      "createdAtFrom=2024-09-28&createdAtTo=2024-09-29&status=DELIVERING";
     const authorization = this.generateAuthorization(method, path, query);
 
     return await fetch(`${this.BASE_URL}${path}?${query}`, {
