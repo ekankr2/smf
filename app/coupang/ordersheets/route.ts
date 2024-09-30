@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { NaverCommerceService } from "@/services/NaverCommerceService";
 import { CoupangService } from "@/services/CoupangService";
+import dayjs from "dayjs";
 
 /**
  * @swagger
@@ -15,7 +15,14 @@ import { CoupangService } from "@/services/CoupangService";
 export async function GET(request: NextRequest) {
   const coupangService = new CoupangService();
 
-  const response = await coupangService.getOrdersheets();
+  const threeDaysAgo = dayjs().subtract(3, "day").format("YYYY-MM-DD");
+  const today = dayjs().format("YYYY-MM-DD");
+
+  const response = await coupangService.getOrderSheets(
+    threeDaysAgo,
+    today,
+    coupangService.OrderStatus.결제완료,
+  );
   const ordersheets = await response.json();
   console.log(ordersheets);
 

@@ -26,7 +26,7 @@ export class CoupangService {
     return `CEA algorithm=HmacSHA256, access-key=${this.ACCESS_KEY}, signed-date=${datetime}, signature=${signature}`;
   };
 
-  orderStatus = {
+  OrderStatus = {
     결제완료: "ACCEPT",
     상품준비중: "INSTRUCT",
     배송지시: "DEPARTURE",
@@ -34,11 +34,14 @@ export class CoupangService {
     배송완료: "FINAL_DELIVERY",
   };
 
-  async getOrdersheets() {
+  async getOrderSheets(
+    startTime: string, // 2017-10-10 || 2017-09-29T00:00
+    endTime: string,
+    status: string,
+  ) {
     const method = "GET";
     const path = `/v2/providers/openapi/apis/api/v4/vendors/${this.VENDOR_ID}/ordersheets`;
-    const query =
-      "createdAtFrom=2024-09-28&createdAtTo=2024-09-29&status=DELIVERING";
+    const query = `createdAtFrom=${startTime}&createdAtTo=${endTime}&status=${status}`;
     const authorization = this.generateAuthorization(method, path, query);
 
     return await fetch(`${this.BASE_URL}${path}?${query}`, {
