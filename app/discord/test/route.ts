@@ -26,6 +26,7 @@ export async function GET(request: NextRequest) {
   // } catch (error) {
   //   console.error(error);
   // }
+  console.log('discord test');
 
   return NextResponse.json({ success: true }, { status: 200 });
 }
