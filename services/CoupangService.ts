@@ -10,7 +10,7 @@ export class CoupangService {
     this.ACCESS_KEY = process.env.COUPANG_ACCESS_KEY as string;
     this.SECRET_KEY = process.env.COUPANG_SECRET_KEY as string;
     this.VENDOR_ID = process.env.COUPANG_VENDOR_ID as string;
-    this.BASE_URL = "https://api-gateway.coupang.com";
+    this.BASE_URL = "https://proxy.smf.co.kr/coupang";
   }
 
   generateAuthorization = (method: string, path: string, query: string) => {
