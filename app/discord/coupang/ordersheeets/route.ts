@@ -4,16 +4,6 @@ import dayjs from "dayjs";
 import { REST } from "@discordjs/rest";
 import { Routes } from "discord-api-types/v10";
 
-/**
- * @swagger
- * /coupang/ordersheets:
- *   get:
- *     summary: 발주서 목록조회
- *     tags: [쿠팡]
- *     responses:
- *       201:
- *         description: Created
- */
 export async function GET(request: NextRequest) {
   const rest = new REST({ version: "10" }).setToken(
     process.env.DISCORD_TOKEN || "",
