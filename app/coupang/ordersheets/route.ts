@@ -24,7 +24,6 @@ export async function GET(request: NextRequest) {
     coupangService.OrderStatus.결제완료,
   );
   const ordersheets = await response.json();
-  console.log(ordersheets);
 
   return NextResponse.json(ordersheets, { status: 200 });
 }

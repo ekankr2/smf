@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  nginx-proxy-server:
+    image: "nginx:latest"
+    container_name: nginx-proxy-server
+    restart: unless-stopped
+    volumes:
+      - ./conf:/etc/nginx/conf.d
+      - ./logs:/var/log/nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - app
+
+networks:
+  app:
+    name: proxy_network
+    driver: bridge
+
+
+
