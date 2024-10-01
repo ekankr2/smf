@@ -14,6 +14,7 @@ import dayjs from "dayjs";
  */
 export async function GET(request: NextRequest) {
   const coupangService = new CoupangService();
+  console.log("ok");
 
   const threeDaysAgo = dayjs().subtract(3, "day").format("YYYY-MM-DD");
   const today = dayjs().format("YYYY-MM-DD");
