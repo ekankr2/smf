@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { REST } from "@discordjs/rest";
 import { Routes } from "discord-api-types/v10";
 
@@ -26,4 +26,6 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error(error);
   }
+
+  return NextResponse.json({ success: true }, { status: 200 });
 }
