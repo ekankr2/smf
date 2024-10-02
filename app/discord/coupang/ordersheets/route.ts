@@ -32,11 +32,11 @@ export async function GET(request: NextRequest) {
     );
     const ordersheets = await response.json();
     if (ordersheets.data && ordersheets.data.length > 0) {
-      // await rest.post(Routes.channelMessages("1290352667302035488"), {
-      //   body: {
-      //     content: `쿠팡 새로운 주문 *${ordersheets.data.length}* 건 있음`,
-      //   },
-      // });
+      await rest.post(Routes.channelMessages("1290352667302035488"), {
+        body: {
+          content: `쿠팡 새로운 주문 *${ordersheets.data.length}* 건 있음`,
+        },
+      });
     }
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
