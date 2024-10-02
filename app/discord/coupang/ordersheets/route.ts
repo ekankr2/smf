@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
     if (ordersheets.data && ordersheets.data.length > 0) {
       await rest.post(Routes.channelMessages("1290352667302035488"), {
         body: {
-          content: `쿠팡 새로운 주문 *${ordersheets.data.length}* 건 있음`,
+          content: `쿠팡 새로운 주문 *${ordersheets.data.length}* 건 있음\n한 시간 뒤 다시 알림예정`,
         },
       });
     }
