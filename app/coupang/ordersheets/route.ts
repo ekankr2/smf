@@ -6,7 +6,7 @@ export const revalidate = 0;
 
 /**
  * @swagger
- * /coupang/ordersheetsAcknowledgement:
+ * /coupang/ordersheets:
  *   get:
  *     summary: 발주서 목록조회
  *     tags: [쿠팡]

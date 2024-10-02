@@ -49,24 +49,29 @@ export async function GET(request: NextRequest) {
       const successEmbed = new EmbedBuilder()
         .setColor(0x00ff00) // Green color
         .setDescription(
-          `쿠팡 신규 주문 **${ordersheets.data.length}** 건 \n상품준비중 처리 완료`,
+          `쿠팡 신규 주문 *${ordersheets.data.length}* 건 \n상품준비중 처리 완료`,
         );
 
       await rest.post(Routes.channelMessages("1290352667302035488"), {
         body: { embeds: [successEmbed.toJSON()] },
       });
+
+      return NextResponse.json({ success: true }, { status: 200 });
     }
 
     const failureEmbed = new EmbedBuilder()
       .setColor(0xff0000) // Red color
       .setDescription(
-        `쿠팡 새로운 주문 **${ordersheets.data.length}** 건 \n상품준비중 처리 실패`,
+        `쿠팡 신규 주문 *${ordersheets.data.length}* 건 \n상품준비중 처리 실패`,
       );
 
     await rest.post(Routes.channelMessages("1290352667302035488"), {
       body: { embeds: [failureEmbed.toJSON()] },
     });
-    return NextResponse.json({ success: true }, { status: 200 });
+    return NextResponse.json(
+      { error: "상품준비중 처리 실패" },
+      { status: 400 },
+    );
   } catch (error) {
     return NextResponse.json({ error: "message send fail" }, { status: 400 });
   }
