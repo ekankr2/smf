@@ -1,6 +1,6 @@
 {
   "crons": [{
-    "path": "/discord/coupang/ordersheets",
+    "path": "/api/cron",
     "schedule": "* 10 * * *"
   }]
 }
