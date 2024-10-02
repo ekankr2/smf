@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { CoupangService } from "@/services/CoupangService";
 import dayjs from "dayjs";
 
+export const revalidate = 0;
+
 /**
  * @swagger
  * /coupang/ordersheets:

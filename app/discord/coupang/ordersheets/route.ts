@@ -4,6 +4,8 @@ import dayjs from "dayjs";
 import { REST } from "@discordjs/rest";
 import { Routes } from "discord-api-types/v10";
 
+export const revalidate = 0;
+
 /**
  * @swagger
  * /discord/coupang/ordersheets:
