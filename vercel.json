@@ -1,0 +1,6 @@
+{
+  "crons": [{
+    "path": "/discord/coupang/ordersheets",
+    "schedule": "0 * * * *"
+  }]
+}
