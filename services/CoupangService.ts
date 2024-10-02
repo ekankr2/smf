@@ -52,4 +52,23 @@ export class CoupangService {
       },
     });
   }
+
+  async orderAcknowledgement(shipmentBoxIds: number[]) {
+    const method = "PUT";
+    const path = `/v2/providers/openapi/apis/api/v4/vendors/${this.VENDOR_ID}/ordersheets/acknowledgement`;
+    const authorization = this.generateAuthorization(method, path, "");
+
+    return await fetch(`${this.BASE_URL}${path}`, {
+      method: method,
+      headers: {
+        Authorization: authorization,
+        "X-EXTENDED-TIMEOUT": "90000",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        vendorId: this.VENDOR_ID,
+        shipmentBoxIds: shipmentBoxIds,
+      }),
+    });
+  }
 }
