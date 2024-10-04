@@ -3,10 +3,6 @@
     {
       "path": "/coupang/ordersheets/acknowledgement/cron",
       "schedule": "*/10 * * * *"
-    },
-    {
-      "path": "/naver/commerce/orders/confirm/cron",
-      "schedule": "*/10 * * * *"
     }
   ]
 }
