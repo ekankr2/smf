@@ -4,7 +4,7 @@ import { Routes } from "discord-api-types/v10";
 
 /**
  * @swagger
- * /discord/test:
+ * /test/discord:
  *   get:
  *     summary: 디스코드 테스트
  *     tags: [test]

@@ -9,7 +9,7 @@ export const revalidate = 0;
 
 /**
  * @swagger
- * /discord/coupang/ordersheetsAcknowledgement:
+ * /coupang/ordersheetsAcknowledgement:
  *   get:
  *     summary: 디스코드 쿠팡 주문 확인
  *     tags: [디스코드]

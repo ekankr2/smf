@@ -1,6 +1,6 @@
 {
   "crons": [{
-    "path": "/discord/coupang/ordersheetsAcknowledgement",
+    "path": "/coupang/ordersheetsAcknowledgement",
     "schedule": "*/10 * * * *"
   }]
 }
