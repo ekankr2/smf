@@ -9,9 +9,9 @@ import { REST } from "@discordjs/rest";
 
 /**
  * @swagger
- * /naver/commerce/orders/confirm:
+ * /naver/commerce/orders/confirm/cron:
  *   post:
- *     summary: 발주 확인
+ *     summary: 네이버 자동 발주 확인 & 디코 전송
  *     tags: [네이버]
  *     responses:
  *       200:

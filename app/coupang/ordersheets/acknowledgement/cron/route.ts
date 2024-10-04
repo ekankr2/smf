@@ -9,9 +9,9 @@ export const revalidate = 0;
 
 /**
  * @swagger
- * /coupang/ordersheetsAcknowledgement:
+ * /coupang/ordersheets/acknowledgement/cron:
  *   get:
- *     summary: 디스코드 쿠팡 주문 확인
+ *     summary: 쿠팡 주문 자동 확인 & 디코 전송
  *     tags: [쿠팡]
  *     responses:
  *       200:
