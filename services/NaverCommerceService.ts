@@ -9,7 +9,7 @@ export class NaverCommerceService {
     this.APPICATION_ID = process.env.NAVER_COMMERCE_APPLICATION_ID as string;
     this.APPLICATION_SECRET = process.env
       .NAVER_COMMERCE_APPLICATION_SECRET as string;
-    this.BASE_URL = "https://api.commerce.naver.com/external";
+    this.BASE_URL = "https://proxy.smf.co.kr/naver-commerce";
   }
 
   generateSignature(timestamp: number) {
