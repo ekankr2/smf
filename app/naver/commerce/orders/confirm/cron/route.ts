@@ -63,8 +63,8 @@ export async function GET(request: NextRequest) {
     );
 
     if (
-      confirmResult.successProductOrderInfos &&
-      confirmResult.successProductOrderInfos.length > 0
+      confirmResult.data?.successProductOrderInfos &&
+      confirmResult.data.successProductOrderInfos.length > 0
     ) {
       const successEmbed = new EmbedBuilder()
         .setColor(0x00ff00) // Green color
