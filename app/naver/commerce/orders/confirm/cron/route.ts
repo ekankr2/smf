@@ -70,7 +70,7 @@ export async function GET(request: NextRequest) {
       const successEmbed = new EmbedBuilder()
         .setColor(0x00ff00) // Green color
         .setDescription(
-          `네이버 신규 주문 *${confirmResult.data.successProductOrderInfos.length || 0}* 건 \n발주확인 처리 완료`,
+          `네이버 신규 주문 *${confirmResult.data?.successProductOrderInfos?.length || 0}* 건 \n발주확인 처리 완료`,
         )
         .setThumbnail("https://api.smf.co.kr/images/naver_logo.png");
       await discordRest.post(Routes.channelMessages("1291811608598675476"), {
