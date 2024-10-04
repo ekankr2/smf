@@ -7,17 +7,19 @@ import { EmbedBuilder } from "@discordjs/builders";
 import { Routes } from "discord-api-types/v10";
 import { REST } from "@discordjs/rest";
 
+export const revalidate = 0;
+
 /**
  * @swagger
  * /naver/commerce/orders/confirm/cron:
- *   post:
+ *   get:
  *     summary: 네이버 자동 발주 확인 & 디코 전송
  *     tags: [네이버]
  *     responses:
  *       200:
  *         description: OK
  */
-export async function POST(request: NextRequest) {
+export async function GET(request: NextRequest) {
   dayjs.extend(utc);
   dayjs.extend(timezone);
 
