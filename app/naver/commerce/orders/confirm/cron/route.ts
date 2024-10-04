@@ -39,7 +39,7 @@ export async function GET(request: NextRequest) {
       from,
       naverService.orderRangeType.주문일시,
       naverService.productOrderStatuses.결제완료,
-      naverService.placeOrderStatusType.발주확인,
+      naverService.placeOrderStatusType.발주미확인,
       to,
     );
     const newOrders = await orderRes.json();
