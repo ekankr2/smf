@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
     if (!newOrders.data || newOrders.data.contents.length === 0) {
       return NextResponse.json(
         { success: true, result: "신규 주문 없음" },
-        { status: 404 },
+        { status: 200 },
       );
     }
 
@@ -63,16 +63,17 @@ export async function GET(request: NextRequest) {
     );
 
     if (
+      confirmRes.ok &&
       confirmResult.data?.successProductOrderInfos &&
       confirmResult.data.successProductOrderInfos.length > 0
     ) {
       const successEmbed = new EmbedBuilder()
         .setColor(0x00ff00) // Green color
         .setDescription(
-          `네이버 신규 주문 *${confirmResult.successProductOrderInfos.length || 0}* 건 \n발주확인 처리 완료`,
+          `네이버 신규 주문 *${confirmResult.data.successProductOrderInfos.length || 0}* 건 \n발주확인 처리 완료`,
         )
         .setThumbnail("https://api.smf.co.kr/images/naver_logo.png");
-      await discordRest.post(Routes.channelMessages("1290352667302035488"), {
+      await discordRest.post(Routes.channelMessages("1291811608598675476"), {
         body: { embeds: [successEmbed.toJSON()] },
       });
       return NextResponse.json({ success: true }, { status: 200 });
@@ -82,7 +83,7 @@ export async function GET(request: NextRequest) {
       .setColor(0x00ff00) // Green color
       .setDescription(`네이버 신규 주문 발주확인 처리 오류`)
       .setThumbnail("https://api.smf.co.kr/images/naver_logo.png");
-    await discordRest.post(Routes.channelMessages("1290352667302035488"), {
+    await discordRest.post(Routes.channelMessages("1291811608598675476"), {
       body: { embeds: [failEmbed.toJSON()] },
     });
 

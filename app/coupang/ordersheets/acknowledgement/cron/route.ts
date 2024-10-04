@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
     if (!ordersheets.data || ordersheets.data.length === 0) {
       return NextResponse.json(
         { success: true, result: "no orders found" },
-        { status: 404 },
+        { status: 200 },
       );
     }
     const orderIds = ordersheets.data.map((order: any) => order.shipmentBoxId);
