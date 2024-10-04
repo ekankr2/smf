@@ -18,10 +18,6 @@ export const revalidate = 0;
  *         description: OK
  */
 export async function GET(request: NextRequest) {
-  const rest = new REST({ version: "10" }).setToken(
-    process.env.DISCORD_TOKEN || "",
-  );
-
   try {
     const coupangService = new CoupangService();
 
@@ -45,14 +41,19 @@ export async function GET(request: NextRequest) {
     const ackRes = await coupangService.orderAcknowledgement(orderIds);
     const acknowlegmentResult = await ackRes.json();
 
+    const discordRest = new REST({ version: "10" }).setToken(
+      process.env.DISCORD_TOKEN || "",
+    );
+
     if (acknowlegmentResult.code === 200) {
       const successEmbed = new EmbedBuilder()
         .setColor(0x00ff00) // Green color
         .setDescription(
           `쿠팡 신규 주문 *${ordersheets.data.length}* 건 \n상품준비중 처리 완료`,
-        );
+        )
+        .setThumbnail("https://api.smf.co.kr/images/coupang_logo.png");
 
-      await rest.post(Routes.channelMessages("1290352667302035488"), {
+      await discordRest.post(Routes.channelMessages("1290352667302035488"), {
         body: { embeds: [successEmbed.toJSON()] },
       });
 
@@ -61,11 +62,10 @@ export async function GET(request: NextRequest) {
 
     const failureEmbed = new EmbedBuilder()
       .setColor(0xff0000) // Red color
-      .setDescription(
-        `쿠팡 신규 주문 *${ordersheets.data.length}* 건 \n상품준비중 처리 실패`,
-      );
+      .setDescription(`쿠팡 신규 주문 상품준비중 처리 오류`)
+      .setThumbnail("https://api.smf.co.kr/images/coupang_logo.png");
 
-    await rest.post(Routes.channelMessages("1290352667302035488"), {
+    await discordRest.post(Routes.channelMessages("1290352667302035488"), {
       body: { embeds: [failureEmbed.toJSON()] },
     });
     return NextResponse.json(

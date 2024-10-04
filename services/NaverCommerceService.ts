@@ -103,4 +103,20 @@ export class NaverCommerceService {
       },
     );
   }
+
+  async confirmOrders(productOrderIds: string[]) {
+    return await fetch(
+      `${this.BASE_URL}/v1/pay-order/seller/product-orders/confirm`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${await this.getToken()}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          productOrderIds,
+        }),
+      },
+    );
+  }
 }

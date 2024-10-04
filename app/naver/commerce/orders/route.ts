@@ -11,25 +11,25 @@ import timezone from "dayjs/plugin/timezone";
  *     summary: 주문 목록
  *     tags: [네이버]
  *     responses:
- *       20o:
- *         description: Created
+ *       200:
+ *         description: OK
  */
 export async function GET(request: NextRequest) {
   dayjs.extend(utc);
   dayjs.extend(timezone);
 
+  const naverService = new NaverCommerceService();
+  const from = dayjs()
+    .tz("Asia/Seoul")
+    .startOf("day")
+    .format("YYYY-MM-DDTHH:mm:ss.SSSZ");
+
+  const to = dayjs()
+    .tz("Asia/Seoul")
+    .endOf("day")
+    .format("YYYY-MM-DDTHH:mm:ss.SSSZ");
+
   try {
-    const naverService = new NaverCommerceService();
-    const from = dayjs()
-      .tz("Asia/Seoul")
-      .startOf("day")
-      .format("YYYY-MM-DDTHH:mm:ss.SSS+09:00");
-
-    const to = dayjs()
-      .tz("Asia/Seoul")
-      .endOf("day")
-      .format("YYYY-MM-DDTHH:mm:ss.SSS+09:00");
-
     const response = await naverService.getOrdersByConditions(
       from,
       naverService.orderRangeType.주문일시,
@@ -38,7 +38,12 @@ export async function GET(request: NextRequest) {
       to,
     );
     const orders = await response.json();
-    return NextResponse.json(orders, { status: 200 });
+
+    const orderIdList = orders.data.contents.map(
+      (order: any) => order.productOrderId,
+    );
+
+    return NextResponse.json(orderIdList, { status: 200 });
   } catch (error: any) {
     return NextResponse.json(
       { error: error.message || "fail" },
