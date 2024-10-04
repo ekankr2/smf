@@ -12,7 +12,7 @@ export const revalidate = 0;
  * /coupang/ordersheetsAcknowledgement:
  *   get:
  *     summary: 디스코드 쿠팡 주문 확인
- *     tags: [디스코드]
+ *     tags: [쿠팡]
  *     responses:
  *       200:
  *         description: OK
