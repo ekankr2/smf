@@ -73,14 +73,17 @@ export async function GET(request: NextRequest) {
           `네이버 신규 주문 *${confirmResult.data?.successProductOrderInfos?.length || 0}* 건 \n발주확인 처리 완료`,
         )
         .setThumbnail("https://api.smf.co.kr/images/naver_logo.png");
-      await discordRest.post(Routes.channelMessages("1291811608598675476"), {
-        body: { embeds: [successEmbed.toJSON()] },
-      });
+      await discordRest.post(
+        Routes.channelMessages(process.env.DISCORD_NAVER_CHANNEL_ID || ""),
+        {
+          body: { embeds: [successEmbed.toJSON()] },
+        },
+      );
       return NextResponse.json({ success: true }, { status: 200 });
     }
 
     const failEmbed = new EmbedBuilder()
-      .setColor(0x00ff00) // Green color
+      .setColor(0xff0000) // red color
       .setDescription(`네이버 신규 주문 발주확인 처리 오류`)
       .setThumbnail("https://api.smf.co.kr/images/naver_logo.png");
     await discordRest.post(Routes.channelMessages("1291811608598675476"), {

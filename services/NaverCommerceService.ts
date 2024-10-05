@@ -119,4 +119,23 @@ export class NaverCommerceService {
       },
     );
   }
+
+  async getDailyPaySettle(startDate: string, endDate: string) {
+    const params = new URLSearchParams({
+      startDate,
+      endDate,
+      pageNumber: "1",
+      pageSize: "100",
+    });
+
+    return await fetch(
+      `${this.BASE_URL}/v1/pay-settle/settle/daily?${params.toString()}`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${await this.getToken()}`,
+        },
+      },
+    );
+  }
 }

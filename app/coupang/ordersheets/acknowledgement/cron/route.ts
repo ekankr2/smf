@@ -53,9 +53,12 @@ export async function GET(request: NextRequest) {
         )
         .setThumbnail("https://api.smf.co.kr/images/coupang_logo.png");
 
-      await discordRest.post(Routes.channelMessages("1290352667302035488"), {
-        body: { embeds: [successEmbed.toJSON()] },
-      });
+      await discordRest.post(
+        Routes.channelMessages(process.env.DISCORD_COUPANG_CHANNEL_ID || ""),
+        {
+          body: { embeds: [successEmbed.toJSON()] },
+        },
+      );
 
       return NextResponse.json({ success: true }, { status: 200 });
     }
