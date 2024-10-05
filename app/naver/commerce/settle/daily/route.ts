@@ -18,6 +18,14 @@ import { REST } from "@discordjs/rest";
  *         description: OK
  */
 export async function GET(request: NextRequest) {
+  // Check if we're in a build environment
+  if (process.env.VERCEL_ENV === "production") {
+    return NextResponse.json(
+      { message: "Skipped during build" },
+      { status: 200 },
+    );
+  }
+
   dayjs.extend(utc);
   dayjs.extend(timezone);
 
