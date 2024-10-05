@@ -37,11 +37,13 @@ export async function GET(request: NextRequest) {
     const messageEmbed = new EmbedBuilder()
       .setColor(0x00ff00) // Green color
       .setDescription(
-        `오늘의 네이버 정산금액은 ${todaysSettle.settleAmount.toLocaleString()} 원 입니다.\n
+        todaysSettle
+          ? `오늘의 네이버 정산금액은 ${todaysSettle.settleAmount.toLocaleString()} 원 입니다.\n
         정산 예정일: ${todaysSettle.settleCompleteDate}\n
         총 금액: ${todaysSettle.paySettleAmount.toLocaleString()}\n
         수수료: ${todaysSettle.paySettleAmount.toLocaleString()}\n
-        혜택정산: ${todaysSettle.benefitSettleAmount.toLocaleString()}\n`,
+        혜택정산: ${todaysSettle.benefitSettleAmount.toLocaleString()}\n`
+          : "오늘은 정산 내역이 없습니다.",
       )
       .setThumbnail("https://api.smf.co.kr/images/money_logo.png");
 
