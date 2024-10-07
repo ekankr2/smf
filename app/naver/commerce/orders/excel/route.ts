@@ -5,9 +5,7 @@ import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import * as XLSX from "xlsx";
 import { REST } from "@discordjs/rest";
-import { AttachmentBuilder } from "discord.js";
 import { Routes } from "discord-api-types/v10";
-import { Readable } from "node:stream";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -23,6 +21,10 @@ dayjs.extend(timezone);
  *         description: OK
  */
 export async function GET(request: NextRequest) {
+  if (!request.headers.get("host")) {
+    return NextResponse.json({ message: "Skipped execution" }, { status: 200 });
+  }
+
   const naverService = new NaverCommerceService();
   const from = dayjs()
     .tz("Asia/Seoul")
