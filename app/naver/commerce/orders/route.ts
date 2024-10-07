@@ -39,11 +39,7 @@ export async function GET(request: NextRequest) {
     );
     const orders = await response.json();
 
-    const orderIdList = orders.data.contents.map(
-      (order: any) => order.productOrderId,
-    );
-
-    return NextResponse.json(orderIdList, { status: 200 });
+    return NextResponse.json(orders.data?.contents, { status: 200 });
   } catch (error: any) {
     return NextResponse.json(
       { error: error.message || "fail" },
