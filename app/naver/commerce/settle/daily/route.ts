@@ -6,6 +6,7 @@ import timezone from "dayjs/plugin/timezone";
 import { EmbedBuilder } from "@discordjs/builders";
 import { Routes } from "discord-api-types/v10";
 import { REST } from "@discordjs/rest";
+import { dayNames } from "@/constants";
 
 /**
  * @swagger
@@ -45,11 +46,11 @@ export async function GET(request: NextRequest) {
       .setColor(0x00ff00) // Green color
       .setDescription(
         todaysSettle
-          ? `오늘(${today})의 네이버 정산금액은 ${todaysSettle.settleAmount.toLocaleString()} 원 입니다.\n
+          ? `${today}(${dayNames[dayjs().day()]})의 네이버 정산금액은 *${todaysSettle.settleAmount.toLocaleString()}* 원 입니다.\n
         정산 예정일: ${todaysSettle.settleCompleteDate}\n
-        총 금액: ${todaysSettle.paySettleAmount.toLocaleString()}\n
-        수수료: ${todaysSettle.paySettleAmount.toLocaleString()}\n
-        혜택정산: ${todaysSettle.benefitSettleAmount.toLocaleString()}\n`
+        총 금액: ${todaysSettle.paySettleAmount.toLocaleString()}원\n
+        수수료: ${todaysSettle.commissionSettleAmount.toLocaleString()}원\n
+        혜택정산: ${todaysSettle.benefitSettleAmount.toLocaleString()}원\n`
           : `오늘(${today})은 정산 내역이 없습니다.`,
       )
       .setThumbnail("https://api.smf.co.kr/images/money_logo.png");
