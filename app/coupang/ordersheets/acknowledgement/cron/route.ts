@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
     const coupangService = new CoupangService();
 
     const threeDaysAgo = dayjs().subtract(3, "day").format("YYYY-MM-DD");
-    const today = dayjs().format("YYYY-MM-DD");
+    const today = dayjs().tz("Asian/Seoul").format("YYYY-MM-DD");
 
     const orderSheetRes = await coupangService.getOrderSheets(
       threeDaysAgo,
@@ -40,6 +40,8 @@ export async function GET(request: NextRequest) {
     const orderIds = ordersheets.data.map((order: any) => order.shipmentBoxId);
     const ackRes = await coupangService.orderAcknowledgement(orderIds);
     const acknowlegmentResult = await ackRes.json();
+
+    console.log(acknowlegmentResult);
 
     const discordRest = new REST({ version: "10" }).setToken(
       process.env.DISCORD_TOKEN || "",
