@@ -4,8 +4,13 @@ import dayjs from "dayjs";
 import { REST } from "@discordjs/rest";
 import { Routes } from "discord-api-types/v10";
 import { EmbedBuilder } from "@discordjs/builders";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 
 export const revalidate = 0;
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 /**
  * @swagger
@@ -22,7 +27,7 @@ export async function GET(request: NextRequest) {
     const coupangService = new CoupangService();
 
     const threeDaysAgo = dayjs().subtract(3, "day").format("YYYY-MM-DD");
-    const today = dayjs().tz("Asian/Seoul").format("YYYY-MM-DD");
+    const today = dayjs().tz("Asia/Seoul").format("YYYY-MM-DD");
 
     const orderSheetRes = await coupangService.getOrderSheets(
       threeDaysAgo,
@@ -40,8 +45,6 @@ export async function GET(request: NextRequest) {
     const orderIds = ordersheets.data.map((order: any) => order.shipmentBoxId);
     const ackRes = await coupangService.orderAcknowledgement(orderIds);
     const acknowlegmentResult = await ackRes.json();
-
-    console.log(acknowlegmentResult);
 
     const discordRest = new REST({ version: "10" }).setToken(
       process.env.DISCORD_TOKEN || "",
@@ -77,7 +80,10 @@ export async function GET(request: NextRequest) {
       { error: "상품준비중 처리 실패" },
       { status: 400 },
     );
-  } catch (error) {
-    return NextResponse.json({ error: "message send fail" }, { status: 400 });
+  } catch (error: any) {
+    return NextResponse.json(
+      { error: error.message || "message send fail" },
+      { status: 400 },
+    );
   }
 }
