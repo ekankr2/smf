@@ -29,7 +29,7 @@ const MainCarousel = () => {
       <ul className="flex touch-pan-y select-none">
         {dataList.map((data: any, index: number) => (
           <li
-            className="relative h-[350px] md:h-[400px] flex w-full min-w-full max-w-full overflow-hidden shrink-0 md:justify-center"
+            className="relative h-[350px] md:h-[450px] flex w-full min-w-full max-w-full overflow-hidden shrink-0 md:justify-center"
             key={index}
           >
             <div className="relative w-full h-full shrink-0">
@@ -43,13 +43,15 @@ const MainCarousel = () => {
               />
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black to-transparent"></div>
             </div>
-            <div className="absolute bottom-0 p-8 text-white">
-              <h4 className="text-24">영애이모농장</h4>
-              <p className="text-14 font-medium mt-2">포도 농사만 30년차,</p>
-              <p className="text-14 font-medium">
+            <div className="absolute bottom-0 left-0 p-8 text-white">
+              <h4 className="text-24 md:text-30">영애이모농장</h4>
+              <p className="text-14 md:text-18 font-medium mt-2">
+                포도 농사만 30년차,
+              </p>
+              <p className="text-14 md:text-18 font-medium">
                 고온 생육저하 현상, 봄철 뿌리 확보가 관건!
               </p>
-              <div className="flex text-12 mt-2">
+              <div className="flex text-12 md:text-16 mt-2">
                 <p className="flex items-center mr-2">
                   <FaHeart className="mr-2" />
                   1,200

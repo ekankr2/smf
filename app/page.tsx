@@ -5,10 +5,12 @@ export default function Home() {
   return (
     <div className="relative w-full py-3.5">
       <MainCarousel />
-      <h2 className="text-24 pt-10">과일 도매</h2>
-      <p className="pt-2 font-medium">제철 과일을 원하는 날짜에 도매가로</p>
-      <section className="pt-4 flex-col flex gap-2">
-        <ul className="flex flex-row gap-2">
+      <h2 className="text-24 md:text-36 pt-10">과일 도매</h2>
+      <p className="pt-2 font-medium md:text-21">
+        제철 과일을 원하는 날짜에 도매가로
+      </p>
+      <section className="pt-4 md:pt-8 flex-col flex gap-2 md:gap-4">
+        <ul className="flex flex-row gap-2 md:gap-4">
           <li className="rounded-3xl w-1/2 h-auto aspect-square bg-gray-300 relative overflow-hidden">
             <Image
               src="/images/main/shine-muscat.jpg"
@@ -16,9 +18,11 @@ export default function Home() {
               fill
               className="relative flex"
             />
-            <div className="absolute bottom-3 left-4 text-white">
-              <h4 className="text-18">샤인머스캣</h4>
-              <p className="text-12 font-medium">무슨말을 넣을까나</p>
+            <div className="absolute bottom-0 left-0 p-4 md:p-6 text-white">
+              <h4 className="text-18 md:text-24">샤인머스캣</h4>
+              <p className="text-12 md:text-16 font-medium">
+                무슨말을 넣을까나
+              </p>
             </div>
           </li>
           <li className="rounded-3xl w-1/2 h-auto aspect-square bg-gray-300 relative overflow-hidden">
@@ -28,13 +32,15 @@ export default function Home() {
               fill
               className="relative flex"
             />
-            <div className="absolute bottom-3 left-4 text-white">
-              <h4 className="text-18">딸기</h4>
-              <p className="text-12 font-medium">무슨말을 넣을까나</p>
+            <div className="absolute  bottom-0 left-0 p-4 md:p-6 text-white">
+              <h4 className="text-18 md:text-24">딸기</h4>
+              <p className="text-12 md:text-16 font-medium">
+                무슨말을 넣을까나
+              </p>
             </div>
           </li>
         </ul>
-        <ul className="flex flex-row gap-2">
+        <ul className="flex flex-row gap-2 md:gap-4">
           <li className="rounded-3xl w-1/2 h-auto aspect-square bg-gray-300 relative overflow-hidden">
             <Image
               src="/images/main/귤.jpg"
@@ -42,9 +48,11 @@ export default function Home() {
               fill
               className="relative flex"
             />
-            <div className="absolute bottom-3 left-4 text-white">
-              <h4 className="text-18">귤</h4>
-              <p className="text-12 font-medium">무슨말을 넣을까나</p>
+            <div className="absolute  bottom-0 left-0 p-4 md:p-6 text-white">
+              <h4 className="text-18 md:text-24">귤</h4>
+              <p className="text-12 md:text-16 font-medium">
+                무슨말을 넣을까나
+              </p>
             </div>
           </li>
           <li className="rounded-3xl w-1/2 h-auto aspect-square bg-gray-300 relative overflow-hidden">
@@ -54,13 +62,15 @@ export default function Home() {
               fill
               className="relative flex"
             />
-            <div className="absolute bottom-3 left-4 text-white">
-              <h4 className="text-18">사과</h4>
-              <p className="text-12 font-medium">무슨말을 넣을까나</p>
+            <div className="absolute  bottom-0 left-0 p-4 md:p-6 text-white">
+              <h4 className="text-18 md:text-24">사과</h4>
+              <p className="text-12 md:text-16 font-medium">
+                무슨말을 넣을까나
+              </p>
             </div>
           </li>
         </ul>
-        <ul className="flex flex-row gap-2">
+        <ul className="flex flex-row gap-2 md:gap-4">
           <li className="rounded-3xl w-1/2 h-auto aspect-square bg-gray-300 relative overflow-hidden">
             <Image
               src="/images/main/배.jpg"
@@ -68,9 +78,11 @@ export default function Home() {
               fill
               className="relative flex"
             />
-            <div className="absolute bottom-3 left-4 text-white">
-              <h4 className="text-18">배</h4>
-              <p className="text-12 font-medium">무슨말을 넣을까나</p>
+            <div className="absolute  bottom-0 left-0 p-4 md:p-6 text-white">
+              <h4 className="text-18 md:text-24">배</h4>
+              <p className="text-12 md:text-16 font-medium">
+                무슨말을 넣을까나
+              </p>
             </div>
           </li>
           <li className="rounded-3xl w-1/2 h-auto aspect-square bg-gray-300 relative overflow-hidden">
@@ -80,9 +92,11 @@ export default function Home() {
               fill
               className="relative flex"
             />
-            <div className="absolute bottom-3 left-4 text-white">
-              <h4 className="text-18">블루베리</h4>
-              <p className="text-12 font-medium">무슨말을 넣을까나</p>
+            <div className="absolute  bottom-0 left-0 p-4 md:p-6 text-white">
+              <h4 className="text-18 md:text-24">블루베리</h4>
+              <p className="text-12 md:text-16 font-medium">
+                무슨말을 넣을까나
+              </p>
             </div>
           </li>
         </ul>
