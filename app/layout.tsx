@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { FaMagnifyingGlass } from "react-icons/fa6";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,11 +15,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="kr">
-      <body>
-        <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+      <body className="">
+        <header className="shadow-sm h-16 sticky mx-auto px-3.5">
+          <nav className="flex items-center h-full justify-between text-24">
+            <GiHamburgerMenu />
+            <FaMagnifyingGlass />
+          </nav>
+        </header>
+        <main className="w-full md:max-w-[712px] flex mx-auto px-3.5">
           {children}
         </main>
-        <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer>
+        <footer className=""></footer>
       </body>
     </html>
   );
