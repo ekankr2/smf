@@ -7,10 +7,6 @@
     {
       "path": "/naver/commerce/orders/confirm/cron",
       "schedule": "*/10 * * * *"
-    },
-    {
-      "path": "/naver/commerce/settle/daily",
-      "schedule": "0 8 * * *"
     }
   ]
 }
