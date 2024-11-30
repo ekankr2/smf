@@ -42,15 +42,20 @@ export async function GET(request: NextRequest) {
         { status: 200 },
       );
     }
-    const orderIds = ordersheets.data.map((order: any) => order.shipmentBoxId);
-    const ackRes = await coupangService.orderAcknowledgement(orderIds);
+    const shipmentBoxIds = ordersheets.data.map((order: any) =>
+      BigInt(order.shipmentBoxId).toString(),
+    );
+    const ackRes = await coupangService.orderAcknowledgement(shipmentBoxIds);
     const acknowlegmentResult = await ackRes.json();
 
     const discordRest = new REST({ version: "10" }).setToken(
       process.env.DISCORD_TOKEN || "",
     );
 
-    if (acknowlegmentResult.code === 200) {
+    if (
+      acknowlegmentResult.code === 200 &&
+      acknowlegmentResult.data.responseCode === 0
+    ) {
       const successEmbed = new EmbedBuilder()
         .setColor(0x00ff00) // Green color
         .setDescription(
