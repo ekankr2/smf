@@ -17,9 +17,9 @@ const KakaoFloatingButton = () => {
       <Image
         src="/images/kakao_logo.png"
         alt="KakaoTalk"
-        width={24}
-        height={24}
-        className="w-6 h-6 mt-1"
+        width={28}
+        height={28}
+        className="pt-1"
       />
       <span className="text-16 font-bold whitespace-nowrap">문의하기</span>
     </button>
