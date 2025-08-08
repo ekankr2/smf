@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
+import KakaoFloatingButton from "./components/KakaoFloatingButton";
 
 export const metadata: Metadata = {
-  title: "SMF - Smart Meets Farm",
-  description: "농장과 소비자를 연결하는 과일 도매 플랫폼",
+  title: "SMF - 과일 도소매",
+  description: "농장과 소비자를 연결하는 과일 플랫폼",
 };
 
 export default function RootLayout({
@@ -26,6 +27,7 @@ export default function RootLayout({
           {children}
         </main>
         <footer className=""></footer>
+        <KakaoFloatingButton />
       </body>
     </html>
   );

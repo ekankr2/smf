@@ -24,7 +24,7 @@ const MainCarousel = () => {
       ref={emblaRef}
     >
       <ul className="flex touch-pan-y select-none">
-        {[0, 1, 2].map((data: any, index: number) => (
+        {[0].map((data: any, index: number) => (
           <li
             className="relative h-[350px] md:h-[450px] flex w-full min-w-full max-w-full overflow-hidden shrink-0 md:justify-center"
             key={index}
